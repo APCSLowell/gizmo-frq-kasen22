@@ -11,6 +11,15 @@ public class Gizmo
   /** Returns true if this Gizmo is electronic, and false
   * otherwise.
   */
+  public int countElectronicsByMaker(String maker){
+    int count = 0; 
+    for (int i = 0; i<purchases.size(); i++){
+      if(purchases.get(i).isElectronic() && purchases.get(i).getMaker().equals(maker)){
+        count = count + 1;
+      }
+    }
+    return count;
+  }
   public boolean isElectronic()
   {
     return isElec;
@@ -19,6 +28,14 @@ public class Gizmo
   * object represented by the
   * parameter, and false otherwise.
   */
+  public boolean hasAdjacentEqualPair(){
+    for(int i = 0; i < purchases.size()-1; i++){
+      if(purchases.get(i).equals(purchases.get(i+1))){
+        return true;
+      }
+    }
+    return false;
+  }
   public boolean equals(Object other)
   {
     boolean sameMaker = maker.equals(((Gizmo)other).getMaker());
